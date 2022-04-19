@@ -15,8 +15,7 @@ import javax.persistence.*;
 @SuperBuilder
 @NoArgsConstructor
 @Entity
-//@Table(name = "SHOW")
-//@SequenceGenerator(name = "idGenerator", sequenceName = "SHOW_SEQ", initialValue = 1, allocationSize = 1)
+@Table(name = "SHOW")
 public class Show extends Program {
 
     @Column(nullable = false)

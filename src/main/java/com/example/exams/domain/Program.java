@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 @Data
 @SuperBuilder
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "PROGRAM")
 @SequenceGenerator(name = "idGenerator", sequenceName = "PROGRAM_SEQ", initialValue = 1, allocationSize = 1)

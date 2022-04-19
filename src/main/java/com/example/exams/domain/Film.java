@@ -17,8 +17,7 @@ import java.util.Set;
 @SuperBuilder
 @NoArgsConstructor
 @Entity
-//@Table(name = "FILM")
-//@SequenceGenerator(name = "idGenerator", sequenceName = "FILM_SEQ", initialValue = 1, allocationSize = 1)
+@Table(name = "FILM")
 public class Film extends Program {
 
     @NotNull
