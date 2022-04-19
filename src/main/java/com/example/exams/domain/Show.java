@@ -1,5 +1,6 @@
-package com.example.moviedatabase.domain;
+package com.example.exams.domain;
 
+import com.example.exams.domain.Program;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

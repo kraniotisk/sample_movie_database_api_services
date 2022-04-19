@@ -1,4 +1,4 @@
-package com.example.moviedatabase.domain;
+package com.example.exams.domain;
 
 import com.sun.istack.NotNull;
 import lombok.*;
