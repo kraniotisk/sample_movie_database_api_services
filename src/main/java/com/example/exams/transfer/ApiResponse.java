@@ -12,9 +12,13 @@ import java.util.UUID;
 @Value
 @Builder
 public class ApiResponse<T> implements Serializable {
+
     String transactionId = UUID.randomUUID().toString().toUpperCase(Locale.ROOT);
+
     @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd hh:mm:ss.SS")
     LocalDateTime createdAt = LocalDateTime.now();
+
     T data;
-    //ApiError apiError;
+
+    ApiError apiError;
 }
