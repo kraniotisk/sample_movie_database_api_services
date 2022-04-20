@@ -20,7 +20,7 @@ public abstract class BaseController<T extends BaseModel> extends BaseComponent 
     protected abstract BaseService<T,Long> getBaseService();
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<T>>> findAll(@RequestParam(name = "search" ,required = false) String search) {
+    public ResponseEntity<ApiResponse<List<T>>> findAll(@RequestParam(name = "search", required = false) String search) {
         List<T> all;
         if (search == null || search.isBlank()) {
             all = getBaseService().findAll();

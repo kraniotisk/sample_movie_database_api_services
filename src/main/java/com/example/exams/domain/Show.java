@@ -1,6 +1,6 @@
 package com.example.exams.domain;
 
-import com.example.exams.domain.Program;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -18,10 +18,11 @@ import javax.persistence.*;
 @Table(name = "SHOW")
 public class Show extends Program {
 
+    @NotNull
     @Column(nullable = false)
     private String channel;
 
+    @NotNull
     @Column(nullable = false)
     private Integer episodes;
-
 }

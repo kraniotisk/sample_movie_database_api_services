@@ -2,6 +2,7 @@ package com.example.exams.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
+import javax.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -20,6 +21,7 @@ public class Person extends BaseModel {
 
     @NotNull
     @Column(length = 200, nullable = false)
+    @Size(max = 200)
     private String name;
 
     private Integer age;

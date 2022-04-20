@@ -2,6 +2,7 @@ package com.example.exams.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
+import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Film extends Program {
 
     @NotNull
     @Column(length = 10000, nullable = false)
+    @Size(max = 10000)
     private String plotSummary;
 
 }

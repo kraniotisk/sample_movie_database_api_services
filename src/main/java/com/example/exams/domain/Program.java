@@ -1,8 +1,9 @@
 package com.example.exams.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
 import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -26,12 +27,15 @@ public abstract class Program extends BaseModel {
 
     @NotNull
     @Column(length = 200, nullable = false)
+    @Size(max = 200)
     private String title;
 
     @Column(precision = 10, scale = 1)
     private BigDecimal rating;
 
+    @NotNull
     @Column(length = 100, nullable = false)
+    @Size(max = 100)
     private String genre;
 
     @OneToMany(mappedBy = "program", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
