@@ -10,8 +10,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -39,7 +37,7 @@ public class CustomExceptionHandler extends BaseComponent {
 									HttpStatus.NOT_FOUND);
 	}
 
-	@ExceptionHandler({AuthenticationException.class, ExpiredJwtException.class, SignatureException.class, AccessDeniedException.class})
+	@ExceptionHandler({ExpiredJwtException.class, SignatureException.class})
 	public final ResponseEntity<ApiResponse<?>> handleSecurityErrors(final RuntimeException ex,
 																	 final WebRequest request) {
 		exceptionSpecificLogging(ex);
@@ -49,11 +47,7 @@ public class CustomExceptionHandler extends BaseComponent {
 	}
 
 	private void exceptionSpecificLogging(final RuntimeException ex) {
-		if (ex instanceof AccessDeniedException) {
-			logger.error("User does not have access to this resource. Details: {}.", ex.getMessage());
-		} else if (ex instanceof AuthenticationException) {
-			logger.error("User could not be authenticated. Details: {}.", ex.getMessage());
-		} else if (ex instanceof ExpiredJwtException) {
+		if (ex instanceof ExpiredJwtException) {
 			logger.error("Authentication token expired, try performing authentication. Details: {}.", ex.getMessage());
 		} else if (ex instanceof SignatureException) {
 			logger.error(
