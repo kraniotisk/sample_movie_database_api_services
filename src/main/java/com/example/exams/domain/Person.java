@@ -1,6 +1,6 @@
 package com.example.exams.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -25,7 +25,7 @@ public class Person extends BaseModel {
     private Integer age;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonIgnoreProperties({"person"})
     private List<PersonRole> personRoles;
 
 }

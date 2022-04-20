@@ -1,6 +1,8 @@
 package com.example.exams.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -32,4 +34,7 @@ public abstract class Program extends BaseModel {
     @Column(length = 100, nullable = false)
     private String genre;
 
+    @OneToMany(mappedBy = "program", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"program"})
+    private List<PersonRole> personRoles;
 }

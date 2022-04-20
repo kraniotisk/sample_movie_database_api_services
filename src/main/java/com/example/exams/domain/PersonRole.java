@@ -1,7 +1,7 @@
 package com.example.exams.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -26,11 +26,11 @@ public class PersonRole extends BaseModel{
 
     @ManyToOne
     @JoinColumn(name = "person_id", nullable = false)
-    @JsonBackReference
+    @JsonIgnoreProperties({"personRoles"})
     private Person person;
 
     @ManyToOne
     @JoinColumn(name = "program_id", nullable = false)
+    @JsonIgnoreProperties({"personRoles"})
     private Program program;
-
 }
