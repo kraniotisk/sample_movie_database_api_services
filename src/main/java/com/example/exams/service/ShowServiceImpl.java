@@ -2,6 +2,7 @@ package com.example.exams.service;
 
 import com.example.exams.domain.Show;
 import com.example.exams.repository.ShowRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,11 @@ public class ShowServiceImpl extends BaseServiceImpl<Show> implements ShowServic
     @Override
     public JpaRepository<Show, Long> getRepository() {
         return showRepository;
+    }
+
+
+    @Override
+    public List<Show> findAll(String search) {
+        return showRepository.findAllByTitleStartsWith(search);
     }
 }

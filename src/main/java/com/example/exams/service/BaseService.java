@@ -20,4 +20,6 @@ public interface BaseService<T, ID> {
     boolean exists(T item);
 
     List<T> findAll();
+
+    List<T> findAll(String search);
 }

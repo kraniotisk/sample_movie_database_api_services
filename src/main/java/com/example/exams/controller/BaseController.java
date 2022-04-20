@@ -14,13 +14,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 public abstract class BaseController<T extends BaseModel> extends BaseComponent {
     protected abstract BaseService<T,Long> getBaseService();
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<T>>> findAll() {
-        return new ResponseEntity<>(ApiResponse.<List<T>>builder().data(getBaseService().findAll()).build(),
+    public ResponseEntity<ApiResponse<List<T>>> findAll(@RequestParam(name = "search" ,required = false) String search) {
+        List<T> all;
+        if (search == null || search.isBlank()) {
+            all = getBaseService().findAll();
+        } else {
+            all = getBaseService().findAll(search);
+        }
+        
+        return new ResponseEntity<>(ApiResponse.<List<T>>builder().data(all).build(),
                 HttpStatus.OK);
     }
 

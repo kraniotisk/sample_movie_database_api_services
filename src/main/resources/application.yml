@@ -23,7 +23,7 @@ spring:
         prepStmtCacheSize: 250
         prepStmtCacheSqlLimit: 2048
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:sample_movie_db;IFEXISTS=FALSE;AUTO_SERVER=FALSE;
+    url: jdbc:h2:mem:sample_movie_db;IFEXISTS=FALSE;AUTO_SERVER=FALSE;IGNORECASE=TRUE;
   h2:
     console:
       enabled: true

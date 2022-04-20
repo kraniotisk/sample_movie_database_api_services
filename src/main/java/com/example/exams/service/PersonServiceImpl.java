@@ -6,6 +6,7 @@ import com.example.exams.domain.Program;
 import com.example.exams.domain.Role;
 import com.example.exams.repository.PersonRepository;
 import com.example.exams.repository.PersonRoleRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,10 @@ public class PersonServiceImpl extends BaseServiceImpl<Person> implements Person
         PersonRole personRole = PersonRole.builder().person(person).program(program).role(role).build();
         personRoleRepository.save(personRole);
         logger.info("Saved person role {}.", personRole);
+    }
+
+    @Override
+    public List<Person> findAll(String search) {
+        return personRepository.findByNameStartsWith(search);
     }
 }
