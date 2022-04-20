@@ -14,7 +14,7 @@ spring:
       max-lifetime: 60000
       maximum-pool-size: 10
       minimum-idle: 1
-      pool-name: eshopConnectionPooling
+      pool-name: movieDatabaseConnectionPooling
       transaction-isolation: TRANSACTION_READ_COMMITTED
       username: sa
       password: sa
@@ -26,7 +26,7 @@ spring:
     url: jdbc:h2:mem:sample_movie_db;IFEXISTS=FALSE;AUTO_SERVER=FALSE;
   h2:
     console:
-      enabled: false
+      enabled: true
       path: /h2-console
   jpa:
     generate-ddl: true
